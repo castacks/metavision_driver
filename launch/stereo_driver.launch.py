@@ -30,6 +30,7 @@ common_params = {
     "bias_file": "",
     "camerainfo_url": "",
     "event_message_time_threshold": 1.0e-3,
+    "trigger_in_mode": "external"
 }
 
 

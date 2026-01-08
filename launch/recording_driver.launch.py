@@ -45,6 +45,9 @@ def launch_setup(context, *args, **kwargs):
                         "camerainfo_url": "",
                         "frame_id": "",
                         "event_message_time_threshold": 1.0e-3,
+                        "serial": LaunchConfig("serial"),
+                        "trigger_in_mode": "external",
+
                     }
                 ],
                 remappings=[("~/events", cam_str + "/events")],
@@ -56,7 +59,7 @@ def launch_setup(context, *args, **kwargs):
                 name="recorder",
                 parameters=[
                     {
-                        "topics": ["/event_camera/events"],
+                        "topics": ["/event_camera/events","/zed/zed_node/left/image_rect_color"],
                         "bag_name": LaunchConfig("bag"),
                         "bag_prefix": LaunchConfig("bag_prefix"),
                     }
@@ -77,6 +80,9 @@ def generate_launch_description():
             LaunchArg("camera_name", default_value=["event_camera"], description="camera name"),
             LaunchArg("bag", default_value=[""], description="name of output bag"),
             LaunchArg("bag_prefix", default_value=["events_"], description="prefix of output bag"),
+            LaunchArg(
+                "serial", default_value=[""], description="serial number of camera"
+            ),
             OpaqueFunction(function=launch_setup),
         ]
     )
