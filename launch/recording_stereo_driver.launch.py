@@ -50,6 +50,7 @@ def launch_setup(context, *args, **kwargs):
                 "frame_id": "cam_0",
                 "serial": "CenturyArks:evc3a_plugin_gen31:00000198",
                 "sync_mode": "primary",
+                "trigger_in_mode": "external",
                 "event_message_time_threshold": 1.0e-3,
             }
         ],
